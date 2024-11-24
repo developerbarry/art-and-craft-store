@@ -17,6 +17,15 @@ const CustomCarousel = () => {
       </div>
 
 
+
+      {/* Right static image */}
+      <div className=" h-[300px] flex justify-center items-center">
+        <img
+          src="https://i.ibb.co.com/ZYHZHfG/slider2.png"
+          alt="Right"
+          className="object-cover w-full h-full"
+        />
+      </div>
     </div>
   );
 };
