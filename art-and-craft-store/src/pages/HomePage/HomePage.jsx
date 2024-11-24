@@ -1,9 +1,11 @@
+import HeroSection from '../../layouts/HeroSection/HeroSection'
 
 const HomePage = () => {
     return (
-        <div>
-            <h1>This is Home</h1>
-        </div>
+        <>
+        <h1>hello Home</h1>
+        <HeroSection />
+        </>
     );
 };
 
