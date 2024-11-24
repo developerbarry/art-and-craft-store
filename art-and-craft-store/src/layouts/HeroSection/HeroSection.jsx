@@ -1,88 +1,97 @@
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, EffectFade } from "swiper/modules";
+import { Autoplay, Pagination } from "swiper/modules";
 import "swiper/css";
-import "swiper/css/effect-fade";  
-
+import "swiper/css/pagination";
 
 const CustomCarousel = () => {
   return (
-    <div className="flex justify-between items-center gap-8">
-      {/* Left static image */}
-      <div className=" h-[300px] flex justify-center items-center">
-        <img
-          src="https://i.ibb.co.com/gZGs1xH/slider1.png"
-          alt="Left"
-          className="object-cover w-full h-full"
-        />
-      </div>
+    <div className="bg-[#F4F4F4]">
+      <div className="container mx-auto ">
+        <div className="flex justify-between items-center pt-10 md:pt-20 gap-8 px-3">
+          {/* Left static image */}
+          <div className="h-[500px] hidden lg:block flex justify-center items-center">
+            <img
+              src="https://i.ibb.co.com/gZGs1xH/slider1.png"
+              alt="Left"
+              className="object-cover w-[440px] h-full"
+            />
+          </div>
 
-      {/* Swiper for Center */}
-      <div className="relative w-[380px] h-[400px]">
-        <Swiper
-          modules={[Autoplay, EffectFade]} // Register modules here
-          effect="fade"
-          autoplay={{ delay: 3000 }}
-          loop={true}
-          speed={1000}
-        >
-          {/* Center Image 1 */}
-          <SwiperSlide>
-            <div className="relative">
-              <img
-                src="https://i.ibb.co.com/rdr5GJg/frame1.png"
-                alt="Center Image 1"
-                className="w-full h-auto object-cover rounded-lg"
-              />
-              <div className="absolute bottom-2 left-0 right-0 bg-black bg-opacity-50 p-3 rounded-lg">
-                <p className="text-white text-center text-sm">This is article 1</p>
-                <p className="text-yellow-400 text-center text-lg mt-2">$20.00</p>
-              </div>
-            </div>
-          </SwiperSlide>
+          {/* Swiper for Center */}
+          <div className="md:w-[380px] w-[280px] h-[400px] md:h-[500px] lg:h-[580px] mx-auto">
+            <Swiper
+              modules={[Autoplay, Pagination]}
+              spaceBetween={60}
+              slidesPerView={1}
+              autoplay={{ delay: 5000 }}
+              loop={true}
+              speed={1000}
+              pagination={{ clickable: true }}
+              className="lg:h-[570px] h-[400px] md:h-[500px]"
+            >
+              {/* Center Slide 1 */}
+              <SwiperSlide>
+                <div className="">
+                  <img
+                    src="https://i.ibb.co.com/rdr5GJg/frame1.png"
+                    alt="Center Image 1"
+                    className=" md:w-full h-full object-cover rounded-lg"
+                  />
+                  <div className="px-10 mt-3">
+                    <p className="text-black-600 font-raj"><span className="md:text-xl text-lg text-[#0eb2e7] font-yan">Frame Type: </span> Metal Frames</p>
+                    <p className="text-black-600 mt-2 font-raj"> <span className="md:text-xl text-lg text-[#0eb2e7] font-yan">Artist: </span> Barry Allen</p>
+                    <p className="text-black-600 mt-2 font-raj"> <span className="md:text-xl text-lg text-[#0eb2e7] font-yan">Price: </span> 20$</p>
+                  </div>
+                </div>
+              </SwiperSlide>
 
-          {/* Center Image 2 */}
-          <SwiperSlide>
-            <div className="relative">
-              <img
-                src="https://i.ibb.co.com/sVRRScy/frame3.png"
-                alt="Center Image 2"
-                className="w-full h-auto object-cover rounded-lg"
-              />
-              <div className="absolute bottom-2 left-0 right-0 bg-black bg-opacity-50 p-3 rounded-lg">
-                <p className="text-white text-center text-sm">This is article 2</p>
-                <p className="text-yellow-400 text-center text-lg mt-2">$25.00</p>
-              </div>
-            </div>
-          </SwiperSlide>
+              {/* Center Slide 2 */}
+              <SwiperSlide>
+                <div className="">
+                  <img
+                    src="https://i.ibb.co.com/sVRRScy/frame3.png"
+                    alt="Center Image 2"
+                    className="md:w-full h-full object-cover rounded-lg"
+                  />
+                  <div className="px-10 mt-3">
+                    <p className="text-black-600 font-raj"><span className="md:text-xl text-lg text-[#0eb2e7] font-yan">Frame Type: </span> Metal Frames</p>
+                    <p className="text-black-600 mt-2 font-raj"> <span className="md:text-xl text-lg text-[#0eb2e7] font-yan">Artist: </span> Barry Allen</p>
+                    <p className="text-black-600 mt-2 font-raj"> <span className="md:text-xl text-lg text-[#0eb2e7] font-yan">Price: </span> 20$</p>
+                  </div>
+                </div>
+              </SwiperSlide>
 
-          {/* Center Image 3 */}
-          <SwiperSlide>
-            <div className="relative">
-              <img
-                src="https://i.ibb.co.com/ZW17s1S/frame4.png"
-                alt="Center Image 3"
-                className="w-full h-auto object-cover rounded-lg"
-              />
-              <div className="absolute bottom-2 left-0 right-0 bg-black bg-opacity-50 p-3 rounded-lg">
-                <p className="text-white text-center text-sm">This is article 3</p>
-                <p className="text-yellow-400 text-center text-lg mt-2">$30.00</p>
-              </div>
-            </div>
-          </SwiperSlide>
-        </Swiper>
-      </div>
+              {/* Center Slide 3 */}
+              <SwiperSlide>
+                <div className="">
+                  <img
+                    src="https://i.ibb.co.com/rdr5GJg/frame1.png"
+                    alt="Center Image 3"
+                    className="md:w-full h-full object-cover rounded-lg"
+                  />
+                  <div className="px-10 mt-3">
+                    <p className="text-black-600 font-raj"><span className="md:text-xl text-lg text-[#0eb2e7] font-yan">Frame Type: </span> Metal Frames</p>
+                    <p className="text-black-600 mt-2 font-raj"> <span className="md:text-xl text-lg text-[#0eb2e7] font-yan">Artist: </span> Barry Allen</p>
+                    <p className="text-black-600 mt-2 font-raj"> <span className="md:text-xl text-lg text-[#0eb2e7] font-yan">Price: </span> 20$</p>
+                  </div>
+                </div>
+              </SwiperSlide>
+            </Swiper>
+          </div>
 
-      {/* Right static image */}
-      <div className=" h-[300px] flex justify-center items-center">
-        <img
-          src="https://i.ibb.co.com/ZYHZHfG/slider2.png"
-          alt="Right"
-          className="object-cover w-full h-full"
-        />
+          {/* Right static image */}
+          <div className="h-[500px] hidden lg:block flex justify-center items-center">
+            <img
+              src="https://i.ibb.co.com/ZYHZHfG/slider2.png"
+              alt="Right"
+              className="object-cover w-full h-full"
+            />
+          </div>
+        </div>
       </div>
     </div>
+
   );
 };
 
 export default CustomCarousel;
-
