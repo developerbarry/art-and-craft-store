@@ -1,11 +1,10 @@
 import { Outlet } from 'react-router';
+import Header from '../Header/Header';
 
 const Root = () => {
   return (
     <div>
-      <header>
-        <h1>Welcome to My Website</h1>
-      </header>
+      <Header />
       <main>
         {/* This is where the nested routes will be rendered */}
         <Outlet />

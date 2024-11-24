@@ -6,6 +6,10 @@ export default {
   ],
   theme: {
     extend: {},
+    fontFamily: {
+      "yan": ['"Yanone Kaffeesatz", sans-serif'],
+      "raj": ['"Rajdhani", sans-serif']
+    }
   },
   plugins: [],
 }
