@@ -56,7 +56,19 @@ const CustomCarousel = () => {
           </SwiperSlide>
 
           {/* Center Image 3 */}
-         
+          <SwiperSlide>
+            <div className="relative">
+              <img
+                src="https://i.ibb.co.com/ZW17s1S/frame4.png"
+                alt="Center Image 3"
+                className="w-full h-auto object-cover rounded-lg"
+              />
+              <div className="absolute bottom-2 left-0 right-0 bg-black bg-opacity-50 p-3 rounded-lg">
+                <p className="text-white text-center text-sm">This is article 3</p>
+                <p className="text-yellow-400 text-center text-lg mt-2">$30.00</p>
+              </div>
+            </div>
+          </SwiperSlide>
         </Swiper>
       </div>
 
