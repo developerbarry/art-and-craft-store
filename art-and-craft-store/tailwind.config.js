@@ -5,7 +5,11 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      gridTemplateColumns: {
+        'auto-fit': 'repeat(auto-fit, minmax(340px, 1fr))',
+      }
+    },
     fontFamily: {
       "yan": ['"Yanone Kaffeesatz", sans-serif'],
       "raj": ['"Rajdhani", sans-serif']

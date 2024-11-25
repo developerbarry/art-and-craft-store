@@ -1,4 +1,5 @@
-import HeroSection from '../../layouts/HeroSection/HeroSection'
+import HeroSection from '../../layouts/Home/HeroSection/HeroSection'
+import WorkOfArt from '../../layouts/Home/WorkOfArt/WorkOfArt';
 
 
 const HomePage = () => {
@@ -7,6 +8,10 @@ const HomePage = () => {
             <section>
                 <HeroSection />
             </section>
+            <section className='py-16'>
+                <WorkOfArt/>
+            </section>
+            
         </>
     );
 };
