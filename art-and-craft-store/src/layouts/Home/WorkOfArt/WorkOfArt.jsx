@@ -7,7 +7,44 @@ const WorkOfArt = () => {
                     <h2 className="text-[40px] font-yan text-[#3e454c]">Work of Art</h2>
                 </div>
                 <div>
-              
+                    <div className="grid grid-cols-4 gap-5 py-5 px-14 max-w-screen-xl mx-auto grid-flow-dense">
+
+                        <img className="col-span-2 row-span-2 w-full h-full object-cover rounded-md"
+                            src="https://i.ibb.co/zS81npc/12.jpg"
+                            alt="" />
+
+                        <img
+                            className="w-full h-full object-cover rounded-md"
+                            src="https://i.ibb.co/sVHkH1t/11.jpg"
+                            alt="" />
+
+                        <img
+                            className="w-full h-full object-cover rounded-md"
+                            src="https://i.ibb.co/VTVY1Jh/10.jpg"
+                            alt="" />
+
+                        <img
+                            className="row-span-2 w-full h-full object-cover rounded-md"
+                            src="https://i.ibb.co/bmmrd2V/05.jpg"
+                            alt="" />
+
+                        <img
+                            className="row-span-2 w-full h-full object-cover rounded-md"
+                            src="https://i.ibb.co/JBSfgyP/09.jpg"
+                            alt="" />
+
+                        <img
+                            className="w-full h-full object-cover rounded-md"
+                            src="https://i.ibb.co/4W2hchN/08.jpg"
+                            alt="" />
+
+                        <img
+                            className="row-span-2 w-full h-full object-cover rounded-md"
+                            src="https://i.ibb.co/QH0sVNs/07.jpg"
+                            alt="" />
+
+                       
+                    </div>
 
                 </div>
             </div>
