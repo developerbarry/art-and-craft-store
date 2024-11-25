@@ -2,6 +2,8 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
+import { Fade } from "react-awesome-reveal";
+
 
 const CustomCarousel = () => {
   return (
@@ -23,7 +25,7 @@ const CustomCarousel = () => {
               modules={[Autoplay, Pagination]}
               spaceBetween={60}
               slidesPerView={1}
-              autoplay={{ delay: 5000 }}
+              autoplay={{ delay: 6000 }}
               loop={true}
               speed={1000}
               pagination={{ clickable: true }}
@@ -38,10 +40,22 @@ const CustomCarousel = () => {
                     className=" md:w-full h-full object-cover rounded-lg"
                   />
                   <div className="px-10 mt-3">
-                    <p className="text-black-600 font-raj"><span className="md:text-xl text-lg text-[#0eb2e7] font-yan">Frame Type: </span> Metal Frames</p>
-                    <p className="text-black-600 mt-2 font-raj"> <span className="md:text-xl text-lg text-[#0eb2e7] font-yan">Artist: </span> Barry Allen</p>
-                    <p className="text-black-600 mt-2 font-raj"> <span className="md:text-xl text-lg text-[#0eb2e7] font-yan">Price: </span> 20$</p>
+                    <Fade delay={1000} cascade damping={0.1} direction="left">
+                      <p className="text-black-600 font-raj">
+                        <span className="md:text-xl text-lg text-[#0eb2e7] font-yan">Frame Type:</span>
+                        <span> Metal Frames</span>
+                      </p>
+                      <p className="text-black-600 mt-2 font-raj">
+                        <span className="md:text-xl text-lg text-[#0eb2e7] font-yan">Artist:</span>
+                        <span> Barry Allen</span>
+                      </p>
+                      <p className="text-black-600 mt-2 font-raj">
+                        <span className="md:text-xl text-lg text-[#0eb2e7] font-yan">Price:</span>
+                        <span> 20$</span>
+                      </p>
+                    </Fade>
                   </div>
+
                 </div>
               </SwiperSlide>
 
@@ -54,9 +68,11 @@ const CustomCarousel = () => {
                     className="md:w-full h-full object-cover rounded-lg"
                   />
                   <div className="px-10 mt-3">
-                    <p className="text-black-600 font-raj"><span className="md:text-xl text-lg text-[#0eb2e7] font-yan">Frame Type: </span> Metal Frames</p>
-                    <p className="text-black-600 mt-2 font-raj"> <span className="md:text-xl text-lg text-[#0eb2e7] font-yan">Artist: </span> Barry Allen</p>
-                    <p className="text-black-600 mt-2 font-raj"> <span className="md:text-xl text-lg text-[#0eb2e7] font-yan">Price: </span> 20$</p>
+                    <Fade delay={1000} cascade damping={0.1} direction="left">
+                      <p className="text-black-600 font-raj"><span className="md:text-xl text-lg text-[#0eb2e7] font-yan">Frame Type: </span> Metal Frames</p>
+                      <p className="text-black-600 mt-2 font-raj"> <span className="md:text-xl text-lg text-[#0eb2e7] font-yan">Artist: </span> Barry Allen</p>
+                      <p className="text-black-600 mt-2 font-raj"> <span className="md:text-xl text-lg text-[#0eb2e7] font-yan">Price: </span> 20$</p>
+                    </Fade>
                   </div>
                 </div>
               </SwiperSlide>
@@ -70,9 +86,11 @@ const CustomCarousel = () => {
                     className="md:w-full h-full object-cover rounded-lg"
                   />
                   <div className="px-10 mt-3">
-                    <p className="text-black-600 font-raj"><span className="md:text-xl text-lg text-[#0eb2e7] font-yan">Frame Type: </span> Metal Frames</p>
-                    <p className="text-black-600 mt-2 font-raj"> <span className="md:text-xl text-lg text-[#0eb2e7] font-yan">Artist: </span> Barry Allen</p>
-                    <p className="text-black-600 mt-2 font-raj"> <span className="md:text-xl text-lg text-[#0eb2e7] font-yan">Price: </span> 20$</p>
+                    <Fade delay={1000} cascade damping={0.1} direction="left">
+                      <p className="text-black-600 font-raj"><span className="md:text-xl text-lg text-[#0eb2e7] font-yan">Frame Type: </span> Metal Frames</p>
+                      <p className="text-black-600 mt-2 font-raj"> <span className="md:text-xl text-lg text-[#0eb2e7] font-yan">Artist: </span> Barry Allen</p>
+                      <p className="text-black-600 mt-2 font-raj"> <span className="md:text-xl text-lg text-[#0eb2e7] font-yan">Price: </span> 20$</p>
+                    </Fade>
                   </div>
                 </div>
               </SwiperSlide>

@@ -1,5 +1,6 @@
 import HeroSection from '../../layouts/HeroSection/HeroSection'
 
+
 const HomePage = () => {
     return (
         <>
