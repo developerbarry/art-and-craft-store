@@ -1,5 +1,6 @@
 import { Outlet } from 'react-router';
 import Header from '../Header/Header';
+import Footer from '../../layouts/Home/Footer/Footer';
 
 const Root = () => {
   return (
@@ -9,9 +10,7 @@ const Root = () => {
         {/* This is where the nested routes will be rendered */}
         <Outlet />
       </main>
-      <footer>
-        <p>© 2024 My Website</p>
-      </footer>
+      <Footer />
     </div>
   );
 };
