@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import PropTypes from 'prop-types';
 
 const CarftItemCard = ({ carftItem }) => {
     const {img, description} = carftItem;
@@ -25,5 +26,9 @@ const CarftItemCard = ({ carftItem }) => {
 
     );
 };
+
+CarftItemCard.propTypes = {
+    carftItem: PropTypes.object
+}
 
 export default CarftItemCard;
