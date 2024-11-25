@@ -43,7 +43,25 @@ const WorkOfArt = () => {
                             src="https://i.ibb.co/QH0sVNs/07.jpg"
                             alt="" />
 
-                       
+                        <img
+                            className="col-span-2 w-full h-full object-cover rounded-md"
+                            src="https://i.ibb.co/C9KzHHf/04.jpg"
+                            alt="" />
+
+                        <img
+                            className="row-span-2 w-full h-full object-cover rounded-md"
+                            src="https://i.ibb.co/ZBsRTGf/06.jpg"
+                            alt="" />
+
+                        <img
+                            className="w-full h-full object-cover rounded-md"
+                            src="https://i.ibb.co/YdG4wtD/02.jpg"
+                            alt="" />
+
+                        <img
+                            className="w-full h-full object-cover rounded-md"
+                            src="https://i.ibb.co/HNmYt7d/03.jpg"
+                            alt="" />
                     </div>
 
                 </div>
