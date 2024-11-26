@@ -5,6 +5,7 @@ import ContactPage from "../pages/ContactPage/ContactPage";
 import AddCraftItem from "../pages/AddCraftItem/AddCraftItem";
 import MyArtAndCraft from "../pages/MyArtAndCraft/MyArtAndCraft";
 import AllArtAndCraftList from "../pages/AllArtAndCraftList/AllArtAndCraftList";
+import SignIn from "../pages/SignIn/SignIn";
 
 const routes = (
   <>
@@ -17,6 +18,7 @@ const routes = (
       <Route path="add-craft-item" element={<AddCraftItem />} />
       <Route path="/my-art-and-craft" element={<MyArtAndCraft />} />
       <Route path="contact" element={<ContactPage />} />
+      <Route path="sign-in" element={<SignIn />}/>
     </Route>
   </>
 );
