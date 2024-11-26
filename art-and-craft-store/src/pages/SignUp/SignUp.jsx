@@ -21,6 +21,37 @@ const SignUp = () => {
         const newUser = { name, email, photoURL, password, confirmPassword }
         console.log(newUser)
 
+        createNewUser(email, password)
+            .then((userCredential) => {
+                const user = userCredential.user;
+                updateProfile(user, {
+                    displayName: name,
+                    photoURL: photoURL
+                }).then(() => {
+                    Swal.fire({
+                        title: 'Success!',
+                        text: 'User Created Successfully!',
+                        icon: 'success',
+                        confirmButtonText: 'Ok'
+                    })
+                }).catch(() => {
+                    Swal.fire({
+                        title: 'error!',
+                        text: 'Something is Wrong!',
+                        icon: 'error',
+                        confirmButtonText: 'Ok'
+                    })
+                })
+
+                console.log(user)
+
+
+            })
+            .catch((error) => {
+                const errorMessage = error.message;
+                console.log(errorMessage)
+            })
+
     }
     return (
         <section>
