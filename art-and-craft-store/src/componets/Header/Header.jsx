@@ -26,11 +26,13 @@ const Header = () => {
                         </button>
                     </div>
                     <ul className="hidden absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2 lg:flex lg:mx-auto lg:flex lg:items-center lg:space-x-6">
-                        <li><NavLink className="text-sm md:text-xl text-[#3e454c] font-medium hover:text-[#0EB2E7]">Home</NavLink></li>
-                        <li><NavLink className="text-sm md:text-xl text-[#3e454c] font-medium hover:text-[#0EB2E7]">All Art & craft Items</NavLink></li>
-                        <li><NavLink className="text-sm md:text-xl text-[#3e454c] font-medium hover:text-[#0EB2E7]">Add Craft Item</NavLink></li>
-                        <li><NavLink className="text-sm md:text-xl text-[#3e454c] font-medium hover:text-[#0EB2E7]">My Art & Craft List</NavLink></li>
-                        <li><NavLink className="text-sm md:text-xl text-[#3e454c] font-medium hover:text-[#0EB2E7]">Contact</NavLink></li>
+                        <li><NavLink to={'/'} className={({ isActive }) =>
+                            `${isActive ? "text-[#0EB2E7]" : "text-[#3e454c]"} text-sm md:text-xl font-medium hover:text-[#0EB2E7]}`
+                        }>Home</NavLink></li>
+                        <li><NavLink to={'/all-art-and-craft'} className={({ isActive }) => `${isActive ? "text-[#0EB2E7]" : "text-[#3e454c]"} text-sm md:text-xl font-medium hover:text-[#0EB2E7]`}>All Art & craft Items</NavLink></li>
+                        <li><NavLink to={'/add-craft-item'} className={({ isActive }) => `${isActive ? "text-[#0EB2E7]" : "text-[#3e454c]"} text-sm md:text-xl font-medium hover:text-[#0EB2E7]`}>Add Craft Item</NavLink></li>
+                        <li><NavLink to={'/my-art-and-craft'} className={({ isActive }) => `${isActive ? "text-[#0EB2E7]" : "text-[#3e454c]"} text-sm md:text-xl font-medium hover:text-[#0EB2E7]`}>My Art & Craft List</NavLink></li>
+                        <li><NavLink to={'/contact'} className={({ isActive }) => `${isActive ? "text-[#0EB2E7]" : "text-[#3e454c]"} text-sm md:text-xl font-medium hover:text-[#0EB2E7]`}>Contact</NavLink></li>
                     </ul>
                     <Link className="hidden lg:inline-block lg:ml-auto lg:mr-3 py-2 px-6 bg-gray-50 hover:bg-gray-100 text-sm md:text-xl text-gray-900 font-bold  rounded-xl transition duration-200" >Sign In</Link>
                     <Link className="hidden lg:inline-block py-2 px-6 bg-blue-500 hover:bg-blue-600 text-sm md:text-xl text-white font-bold rounded-xl transition duration-200" >Sign up</Link>
