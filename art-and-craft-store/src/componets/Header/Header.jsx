@@ -35,7 +35,7 @@ const Header = () => {
                         <li><NavLink to={'/contact'} className={({ isActive }) => `${isActive ? "text-[#0EB2E7]" : "text-[#3e454c]"} text-sm md:text-xl font-medium hover:text-[#0EB2E7]`}>Contact</NavLink></li>
                     </ul>
                     <Link className="hidden lg:inline-block lg:ml-auto lg:mr-3 py-2 px-6 bg-gray-50 hover:bg-gray-100 text-sm md:text-xl text-gray-900 font-bold  rounded-xl transition duration-200" >Sign In</Link>
-                    <Link className="hidden lg:inline-block py-2 px-6 bg-blue-500 hover:bg-blue-600 text-sm md:text-xl text-white font-bold rounded-xl transition duration-200" >Sign up</Link>
+                    <Link className="hidden lg:inline-block py-2 px-6 bg-[#0eb2e7] hover:bg-blue-600 text-sm md:text-xl text-white font-bold rounded-xl transition duration-200" >Sign up</Link>
                 </nav>
             </div>
 
