@@ -26,6 +26,8 @@ const SignIn = () => {
                     confirmButtonText: 'Ok'
                   })
             }
+
+            form.reset()
         })
         .catch((error) => {
             const errorMessage = error.message;
