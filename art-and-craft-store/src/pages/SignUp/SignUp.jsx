@@ -24,6 +24,7 @@ const SignUp = () => {
 
         setErrorMessage('');
         setErrorConPass('');
+        setErrorEmail('');
 
         const gmailRegex = /^[a-zA-Z0-9._%+-]+@gmail\.com$/;
 
@@ -64,9 +65,6 @@ const SignUp = () => {
                         confirmButtonText: 'Ok'
                     })
                 })
-
-                console.log(user)
-
 
             })
             .catch((error) => {

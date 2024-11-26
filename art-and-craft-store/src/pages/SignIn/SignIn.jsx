@@ -1,5 +1,21 @@
+import { useContext, useState } from "react";
+import { Link } from "react-router-dom";
+import { AuthContext } from "../../provider/AuthProvider";
 
 const SignIn = () => {
+
+    const { signInUser } = useContext(AuthContext);
+    const [displayPass, setDisplayPass] = useState(false)
+
+    const handleSignIn = (event) => {
+        event.preventDefault()
+        const form = new FormData(event.currentTarget);
+        const email = form.get('email');
+        const password = form.get('password');
+
+        console.log(email, password)
+    }
+
     return (
         <section>
             <div className="container mx-auto">
@@ -10,15 +26,17 @@ const SignIn = () => {
                         </h2>
                         <p className="mt-2 text-center text-xl text-gray-600 max-w">
                             <span>Or </span>
-                            <a href="#" className="font-medium text-blue-600 hover:text-blue-500">
+                            <Link to={'/sign-up'} className="font-medium text-blue-600 hover:text-blue-500">
                                 create an account
-                            </a>
+                            </Link>
                         </p>
                     </div>
 
                     <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
                         <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
-                            <form className="space-y-6" action="#" method="POST">
+                            <form
+                                onSubmit={handleSignIn}
+                                className="space-y-6">
                                 <div>
                                     <label htmlFor="email" className="block text-xl font-medium text-gray-700 font-yan">
                                         Email address
@@ -34,10 +52,24 @@ const SignIn = () => {
                                     <label htmlFor="password" className="block text-xl font-medium text-gray-700 font-yan">
                                         Password
                                     </label>
-                                    <div className="mt-1">
-                                        <input id="password" name="password" type="password" autoComplete="current-password" required
-                                            className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-base font-raj"
+                                    <div className="relative flex justify-center items-center mt-1">
+                                        <input id="password" name="password" type={displayPass ? 'text' : 'password'} autoComplete="current-password" required
+                                            className="rounded-md block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-base font-raj"
                                             placeholder="Enter your password" />
+
+                                        {
+                                            displayPass ?
+                                                <svg
+                                                    onClick={() => setDisplayPass(!displayPass)}
+
+                                                    xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#bbb" stroke="#bbb" className="w-4 h-4 absolute  right-4 cursor-pointer"><path d="m644-428-58-58q9-47-27-88t-93-32l-58-58q17-8 34.5-12t37.5-4q75 0 127.5 52.5T660-500q0 20-4 37.5T644-428Zm128 126-58-56q38-29 67.5-63.5T832-500q-50-101-143.5-160.5T480-720q-29 0-57 4t-55 12l-62-62q41-17 84-25.5t90-8.5q151 0 269 83.5T920-500q-23 59-60.5 109.5T772-302Zm20 246L624-222q-35 11-70.5 16.5T480-200q-151 0-269-83.5T40-500q21-53 53-98.5t73-81.5L56-792l56-56 736 736-56 56ZM222-624q-29 26-53 57t-41 67q50 101 143.5 160.5T480-280q20 0 39-2.5t39-5.5l-36-38q-11 3-21 4.5t-21 1.5q-75 0-127.5-52.5T300-500q0-11 1.5-21t4.5-21l-84-82Zm319 93Zm-151 75Z" /></svg> :
+
+                                                <svg
+                                                    onClick={() => setDisplayPass(!displayPass)}
+                                                    xmlns="http://www.w3.org/2000/svg" fill="#bbb" stroke="#bbb" className="w-4 h-4 absolute right-4 cursor-pointer" viewBox="0 0 128 128">
+                                                    <path d="M64 104C22.127 104 1.367 67.496.504 65.943a4 4 0 0 1 0-3.887C1.367 60.504 22.127 24 64 24s62.633 36.504 63.496 38.057a4 4 0 0 1 0 3.887C126.633 67.496 105.873 104 64 104zM8.707 63.994C13.465 71.205 32.146 96 64 96c31.955 0 50.553-24.775 55.293-31.994C114.535 56.795 95.854 32 64 32 32.045 32 13.447 56.775 8.707 63.994zM64 88c-13.234 0-24-10.766-24-24s10.766-24 24-24 24 10.766 24 24-10.766 24-24 24zm0-40c-8.822 0-16 7.178-16 16s7.178 16 16 16 16-7.178 16-16-7.178-16-16-16z" data-original="#000000"></path>
+                                                </svg>
+                                        }
                                     </div>
                                 </div>
 
