@@ -6,6 +6,7 @@ import AddCraftItem from "../pages/AddCraftItem/AddCraftItem";
 import MyArtAndCraft from "../pages/MyArtAndCraft/MyArtAndCraft";
 import AllArtAndCraftList from "../pages/AllArtAndCraftList/AllArtAndCraftList";
 import SignIn from "../pages/SignIn/SignIn";
+import SignUp from "../pages/SignUp/SignUp";
 
 const routes = (
   <>
@@ -19,6 +20,7 @@ const routes = (
       <Route path="/my-art-and-craft" element={<MyArtAndCraft />} />
       <Route path="contact" element={<ContactPage />} />
       <Route path="sign-in" element={<SignIn />}/>
+      <Route path="sign-up" element={<SignUp />}/>
     </Route>
   </>
 );
