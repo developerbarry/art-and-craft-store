@@ -4,6 +4,8 @@ import { useState } from 'react';
 const Header = () => {
 
     const [display, setDisplay] = useState(false)
+    const [profileOpen, setProfileOpen] = useState(false)
+
 
 
     return (
@@ -34,10 +36,65 @@ const Header = () => {
                         <li><NavLink to={'/my-art-and-craft'} className={({ isActive }) => `${isActive ? "text-[#0EB2E7]" : "text-[#3e454c]"} text-sm md:text-xl font-medium hover:text-[#0EB2E7]`}>My Art & Craft List</NavLink></li>
                         <li><NavLink to={'/contact'} className={({ isActive }) => `${isActive ? "text-[#0EB2E7]" : "text-[#3e454c]"} text-sm md:text-xl font-medium hover:text-[#0EB2E7]`}>Contact</NavLink></li>
                     </ul>
-                    <Link to={'sign-in'} className="hidden lg:inline-block lg:ml-auto lg:mr-3 py-2 px-6 bg-gray-50 hover:bg-gray-100 text-sm md:text-xl text-gray-900 font-bold  rounded-xl transition duration-200" >Sign In</Link>
-                    <Link to={'/sign-up'} className="hidden lg:inline-block py-2 px-6 bg-[#0eb2e7] hover:bg-[#1195bf] text-sm md:text-xl text-white font-bold rounded-xl transition duration-200" >Sign up</Link>
+
+                    <div className='absolute right-14 md:right-6 h-8'>
+                        <button
+                            onClick={() => setProfileOpen(!profileOpen)}
+
+                            className="flex items-center text-sm pe-1 font-medium text-gray-900 rounded-full hover:text-blue-600 md:me-0 focus:ring-4 focus:ring-gray-100 border relative" type="button">
+                            <span className="sr-only">Open user menu</span>
+                            <img className="w-8 h-8 me-2 rounded-full" src="https://lh3.googleusercontent.com/a/ACg8ocKdUDNDpk2RxF0u4xNY9VqU4FGZcqwylM2V6kd28cTBp3lDrq0m=s96-c-rg-br100" alt="user photo" />
+                            Bonnie Green
+                            <svg className="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                                <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 1 4 4 4-4" />
+                            </svg>
+                        </button>
+
+                        <div
+                            onClick={() => setProfileOpen(false)}
+                            className={`${profileOpen ? 'inline-block fixed inset-0 cursor-pointer' : 'hidden'}`}></div>  {/* I'm not sure, is that right way or wrong */}
+
+                        <div className={`z-10 ${profileOpen ? 'block' : 'hidden'} bg-white divide-y divide-gray-100 rounded-lg shadow w-44 absolute right-2 top-10 dark:bg-gray-700`}>
+                            <div className="px-4 py-3 text-sm text-gray-900 dark:text-white">
+                                <div className="font-medium ">Pro User</div>
+                                <div className="truncate">name@flowbite.com</div>
+                            </div>
+                            <ul className="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownInformdropdownAvatarNameButtonationButton">
+                                <li>
+                                    <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Dashboard</a>
+                                </li>
+                                <li>
+                                    <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Settings</a>
+                                </li>
+                                <li>
+                                    <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Earnings</a>
+                                </li>
+                            </ul>
+                            <div className="py-2">
+                                <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign out</a>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+
+
+
+
+
+                    <div className='hidden'>
+                        <Link to={'sign-in'} className="hidden lg:inline-block lg:ml-auto lg:mr-3 py-2 px-6 bg-gray-50 hover:bg-gray-100 text-sm md:text-xl text-gray-900 font-bold  rounded-xl transition duration-200" >Sign In</Link>
+                        <Link to={'/sign-up'} className="hidden lg:inline-block py-2 px-6 bg-[#0eb2e7] hover:bg-[#1195bf] text-sm md:text-xl text-white font-bold rounded-xl transition duration-200" >Sign up</Link>
+                    </div>
+
                 </nav>
             </div>
+
+
+
+
+
 
 
             {/* Mobile Menu Bar */}
@@ -63,26 +120,26 @@ const Header = () => {
                     <div>
                         <ul>
                             <li className="mb-1">
-                                <NavLink className="block p-4 text-lg font-semibold text-[#3e454c] hover:bg-blue-50 hover:text-[#0eb2e7] rounded">Home</NavLink>
+                                <NavLink to={'/'} className="block p-4 text-lg font-semibold text-[#3e454c] hover:bg-blue-50 hover:text-[#0eb2e7] rounded">Home</NavLink>
                             </li>
                             <li className="mb-1">
-                                <NavLink className="block p-4 text-lg font-semibold text-[#3e454c] hover:bg-blue-50 hover:text-[#0eb2e7] rounded">All Art & craft Items</NavLink>
+                                <NavLink to={'/all-art-and-craft'} className="block p-4 text-lg font-semibold text-[#3e454c] hover:bg-blue-50 hover:text-[#0eb2e7] rounded">All Art & craft Items</NavLink>
                             </li>
                             <li className="mb-1">
-                                <NavLink className="block p-4 text-lg font-semibold text-[#3e454c] hover:bg-blue-50 hover:text-[#0eb2e7] rounded">Add Craft Item</NavLink>
+                                <NavLink to={'/add-craft-item'} className="block p-4 text-lg font-semibold text-[#3e454c] hover:bg-blue-50 hover:text-[#0eb2e7] rounded">Add Craft Item</NavLink>
                             </li>
                             <li className="mb-1">
-                                <NavLink className="block p-4 text-lg font-semibold text-[#3e454c] hover:bg-blue-50 hover:text-[#0eb2e7] rounded">My Art & Craft List</NavLink>
+                                <NavLink to={'/my-art-and-craft'} className="block p-4 text-lg font-semibold text-[#3e454c] hover:bg-blue-50 hover:text-[#0eb2e7] rounded">My Art & Craft List</NavLink>
                             </li>
                             <li className="mb-1">
-                                <NavLink className="block p-4 text-lg font-semibold text-[#3e454c] hover:bg-blue-50 hover:text-[#0eb2e7] rounded">Contact</NavLink>
+                                <NavLink to={'/contact'} className="block p-4 text-lg font-semibold text-[#3e454c] hover:bg-blue-50 hover:text-[#0eb2e7] rounded">Contact</NavLink>
                             </li>
                         </ul>
                     </div>
                     <div className="mt-auto">
                         <div className="pt-6">
-                            <Link className="block px-4 py-4 mb-3 leading-loose text-lg text-center font-semibold leading-none bg-gray-50 hover:bg-gray-100 rounded-xl">Sign in</Link>
-                            <Link className="block px-4 py-3 mb-2 leading-loose text-lg text-center text-white font-semibold bg-[#0eb2e7] hover:bg-[#1195bf]  rounded-xl">Sign Up</Link>
+                            <Link to={'/sign-in'} className="block px-4 py-4 mb-3 leading-loose text-lg text-center font-semibold leading-none bg-gray-50 hover:bg-gray-100 rounded-xl">Sign in</Link>
+                            <Link to={'/sign-up'} className="block px-4 py-3 mb-2 leading-loose text-lg text-center text-white font-semibold bg-[#0eb2e7] hover:bg-[#1195bf]  rounded-xl">Sign Up</Link>
                         </div>
                         <p className="my-4 text-xs text-center text-gray-400">
                             <span>Copyright © 2024</span>
