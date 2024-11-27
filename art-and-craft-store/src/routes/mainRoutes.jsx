@@ -7,6 +7,7 @@ import MyArtAndCraft from "../pages/MyArtAndCraft/MyArtAndCraft";
 import AllArtAndCraftList from "../pages/AllArtAndCraftList/AllArtAndCraftList";
 import SignIn from "../pages/SignIn/SignIn";
 import SignUp from "../pages/SignUp/SignUp";
+import PrivateRoute from "./PrivateRoute";
 
 const routes = (
   <>
@@ -16,11 +17,11 @@ const routes = (
         element={<HomePage />}
       />  {/* Default child route */}
       <Route path="all-art-and-craft" element={<AllArtAndCraftList />} />
-      <Route path="add-craft-item" element={<AddCraftItem />} />
-      <Route path="/my-art-and-craft" element={<MyArtAndCraft />} />
+      <Route path="add-craft-item" element={<PrivateRoute><AddCraftItem /></PrivateRoute>} />
+      <Route path="/my-art-and-craft" element={<PrivateRoute><MyArtAndCraft /></PrivateRoute>} />
       <Route path="contact" element={<ContactPage />} />
-      <Route path="sign-in" element={<SignIn />}/>
-      <Route path="sign-up" element={<SignUp />}/>
+      <Route path="sign-in" element={<SignIn />} />
+      <Route path="sign-up" element={<SignUp />} />
     </Route>
   </>
 );
