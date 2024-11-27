@@ -1,10 +1,14 @@
 import { useContext, useState } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
+import { ToastContainer } from 'react-toastify';
+import PropTypes from "prop-types";
 
-const ProfileDropDown = () => {
+
+const ProfileDropDown = ({ handleSignOut }) => {
+
     const { user } = useContext(AuthContext)
     const [profileOpen, setProfileOpen] = useState(false)
-
+    
     return (
         <div className='absolute right-14 md:right-14 lg:right-6 h-8'>
             <button
@@ -40,12 +44,18 @@ const ProfileDropDown = () => {
                     </li>
                 </ul>
                 <div className="py-2">
-                    <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign out</a>
+                    <button onClick={handleSignOut} className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign out</button>
                 </div>
+
+                <ToastContainer />
             </div>
 
         </div>
     );
 };
+
+ProfileDropDown.propTypes = {
+    handleSignOut: PropTypes.func
+}
 
 export default ProfileDropDown;

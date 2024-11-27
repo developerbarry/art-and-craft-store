@@ -1,19 +1,38 @@
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import logo from '../../assets/logo.png'
 import { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../provider/AuthProvider';
 import ProfileDropDown from '../ProfileDropDown/ProfileDropDown';
 import '../../routes/protectedRoute.css';
+import { toast } from 'react-toastify';
+
+
+
+
 const Header = () => {
-    const { user, loading } = useContext(AuthContext)
+    const { user, loading, signOutUser } = useContext(AuthContext)
     const [display, setDisplay] = useState(false)
     const [isLoading, setIsLoading] = useState(loading);
+    const navigate = useNavigate();
+
 
     useEffect(() => {
         if (!loading) {
             setIsLoading(false); // Set loading to false when context loading completes
         }
     }, [loading]);
+
+    const handleSignOut = () => {
+        signOutUser()
+            .then(() => {
+                navigate('/')
+            })
+            .catch(error => {
+                if (error) {
+                    toast.error('Something went wrong. Please try again.')
+                }
+            })
+    }
 
 
     return (
@@ -50,7 +69,7 @@ const Header = () => {
                         <div className="loader"></div>
                     ) :
                         user ? (
-                            <ProfileDropDown />
+                            <ProfileDropDown handleSignOut={handleSignOut} />
                         ) :
 
                             (

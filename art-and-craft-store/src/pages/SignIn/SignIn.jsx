@@ -1,45 +1,49 @@
 import { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
 import Swal from "sweetalert2";
 
 const SignIn = () => {
 
     const { signInUser } = useContext(AuthContext);
-    const [displayPass, setDisplayPass] = useState(false)
+    const [displayPass, setDisplayPass] = useState(false);
+    const location = useLocation();
+    const navigate = useNavigate();
+
 
     const handleSignIn = (event) => {
         event.preventDefault()
+        const target = event.currentTarget;
         const form = new FormData(event.currentTarget);
         const email = form.get('email');
         const password = form.get('password');
 
         signInUser(email, password)
-        .then((userCredential) => {
-            const user = userCredential.user;
-            console.log(user)
-            if(user){
-                Swal.fire({
-                    title: 'Success!',
-                    text: 'Successfully Login!',
-                    icon: 'success',
-                    confirmButtonText: 'Ok'
-                  })
-            }
-
-            form.reset()
-        })
-        .catch((error) => {
-            const errorMessage = error.message;
-            if(errorMessage){
-                Swal.fire({
-                    title: 'Error!',
-                    text: 'Something is wrong. Please try again!',
-                    icon: 'error',
-                    confirmButtonText: 'Ok'
-                  })
-            }
-        })
+            .then((userCredential) => {
+                const user = userCredential.user;
+                console.log(user)
+                if (user) {
+                    Swal.fire({
+                        title: 'Success!',
+                        text: 'Successfully Login!',
+                        icon: 'success',
+                        confirmButtonText: 'Ok'
+                    })
+                }
+                navigate(location.state);
+                target.reset();
+            })
+            .catch((error) => {
+                const errorMessage = error.message;
+                if (errorMessage) {
+                    Swal.fire({
+                        title: 'Error!',
+                        text: 'Something is wrong. Please try again!',
+                        icon: 'error',
+                        confirmButtonText: 'Ok'
+                    })
+                }
+            })
     }
 
     return (
