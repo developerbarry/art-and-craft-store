@@ -8,7 +8,12 @@ export default {
     extend: {
       gridTemplateColumns: {
         'auto-fit': 'repeat(auto-fit, minmax(340px, 1fr))',
-      }
+      },
+
+      screens: {
+        'xs': { 'max': '374px' }, // Custom screen size for less than 350px
+      },
+
     },
     fontFamily: {
       "yan": ['"Yanone Kaffeesatz", sans-serif'],
