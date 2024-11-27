@@ -26,7 +26,9 @@ async function run() {
         await client.connect();
 
         const database = client.db("CarftAndArtDB");
+        const allArtAndCraft = database.collection("artAndCraft")
         const sixCraftItems = database.collection("mainSixCategories");
+
 
         app.get('/six-craft-items', async (req, res) => {
             const query = sixCraftItems.find();
@@ -34,7 +36,13 @@ async function run() {
             res.send(result)
         })
 
-        
+        app.get('/all-art-and-craft-items', async (req, res) => {
+            const query = allArtAndCraft.find();
+            const result = await query.toArray();
+            res.send(result)
+        })
+
+
         // mainSixCategories
 
         // Send a ping to confirm a successful connection
