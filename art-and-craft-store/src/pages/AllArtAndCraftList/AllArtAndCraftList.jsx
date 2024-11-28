@@ -54,7 +54,24 @@ const AllArtAndCraftList = () => {
                         </form>
 
                     </div>
-                   
+                    <div className="grid grid-cols-1 md:grid-cols-4 gap-6 py-14 px-4">
+
+                        {
+                            skeletonItems.map((index) => (
+                                <div key={index} className="flex flex-col rounded shadow-md w-full animate-pulse h-96">
+                                    <div className="h-48 rounded-t dark:bg-gray-300"></div>
+                                    <div className="flex-1 px-4 py-8 space-y-4 sm:p-8 dark:bg-gray-50">
+                                        <div className="w-full h-6 rounded dark:bg-gray-300"></div>
+                                        <div className="w-full h-6 rounded dark:bg-gray-300"></div>
+                                        <div className="w-3/4 h-6 rounded dark:bg-gray-300"></div>
+                                    </div>
+                                </div>
+                            ))
+                        }
+
+
+
+                    </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-4 gap-6 py-14 px-4">
                         {
