@@ -49,7 +49,6 @@ const AddCraftItem = ({ update }) => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data)
                 if (data.insertedId) {
                     Swal.fire({
                         title: 'Success!',
@@ -80,7 +79,6 @@ const AddCraftItem = ({ update }) => {
         const email = user.email;
 
         const item = { image, item_name, subcategory_Name, short_description, price, rating, customization, processing_time, stockStatus, email }
-        console.log(item)
 
         fetch(`http://localhost:5000/all-art-and-craft-items/my-art-and-craft/${updateItem._id}`, {
             method: "PUT",
@@ -91,7 +89,6 @@ const AddCraftItem = ({ update }) => {
         })
         .then(res => res.json())
         .then(data => {
-            console.log(data)
             if(data.modifiedCount > 0){
                 Swal.fire({
                     title: 'Success!',
