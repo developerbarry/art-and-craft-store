@@ -53,7 +53,7 @@ const AllArtAndCraftList = () => {
                         </form>
 
                     </div>
-                    <div className="grid grid-cols-4 gap-6">
+                    <div className="grid grid-cols-4 gap-6 py-14 px-4">
                         {
                             artAndCraftItems.map((artAndCraftItem) => <CarftAndArtCard key={artAndCraftItem._id} artAndCraftItem={artAndCraftItem} />)
                         }
