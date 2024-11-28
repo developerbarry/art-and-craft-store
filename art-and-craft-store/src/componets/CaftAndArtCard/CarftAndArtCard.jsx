@@ -1,13 +1,14 @@
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
 
 const CarftAndArtCard = ({ artAndCraftItem }) => {
 
-    const { image, stockStatus, item_name, subcategory_Name, price, rating } = artAndCraftItem;
+    const { _id, image, stockStatus, item_name, subcategory_Name, price, rating } = artAndCraftItem;
 
     return (
-        
-        <div className="bg-white rounded-lg overflow-hidden shadow-2xl w-full flex flex-col">
+
+        <Link to={`/all-art-and-craft/${_id}`} className="bg-white rounded-lg overflow-hidden shadow-2xl w-full flex flex-col">
 
             <img className="h-48 w-full object-cover object-end" src={image} alt="Home in Countryside" />
             <div className="p-6 flex flex-col flex-1 justify-between">
@@ -34,7 +35,7 @@ const CarftAndArtCard = ({ artAndCraftItem }) => {
                     </div>
                 </div>
             </div>
-        </div>
+        </Link>
     );
 };
 

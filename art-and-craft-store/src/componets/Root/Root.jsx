@@ -6,7 +6,6 @@ const Root = () => {
     <div>
       <Header />
       <main>
-        {/* This is where the nested routes will be rendered */}
         <Outlet />
       </main>
       <Footer/>

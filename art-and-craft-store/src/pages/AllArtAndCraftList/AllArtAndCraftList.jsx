@@ -6,6 +6,7 @@ const AllArtAndCraftList = () => {
 
     const [artAndCraftItems, setArtAndCraftItems] = useState([])
     const [pricingType, setPricingType] = useState("All");
+    const skeletonItems = new Array(8).fill(null);
 
     const handlePricingChange = (event) => {
         setPricingType(event.target.value);
@@ -53,7 +54,9 @@ const AllArtAndCraftList = () => {
                         </form>
 
                     </div>
-                    <div className="grid grid-cols-4 gap-6 py-14 px-4">
+                   
+
+                    <div className="grid grid-cols-1 md:grid-cols-4 gap-6 py-14 px-4">
                         {
                             artAndCraftItems.map((artAndCraftItem) => <CarftAndArtCard key={artAndCraftItem._id} artAndCraftItem={artAndCraftItem} />)
                         }
