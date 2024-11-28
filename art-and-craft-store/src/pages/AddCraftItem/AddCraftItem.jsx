@@ -65,6 +65,35 @@ const AddCraftItem = ({ update }) => {
     }
 
 
+    const handleUpdateItem = (event) => {
+        event.preventDefault()
+        const form = event.target;
+        const image = form.image.value;
+        const item_name = form.item_name.value;
+        const subcategory_Name = form.sub_category.value;
+        const short_description = form.details.value;
+        const price = form.price.value;
+        const rating = form.rating.value;
+        const customization = form.customization.value;
+        const processing_time = form.processing_time.value;
+        const stockStatus = form.stockStatus.value;
+        const email = user.email;
+
+        const item = { image, item_name, subcategory_Name, short_description, price, rating, customization, processing_time, stockStatus, email }
+
+        fetch(`http://localhost:5000/all-art-and-craft-items/my-art-and-craft/${id}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(item)
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data)
+        })
+    }
+
 
     return (
         <section>
@@ -79,7 +108,7 @@ const AddCraftItem = ({ update }) => {
                     </div>
 
                     <div className="p-6 space-y-6">
-                        <form onSubmit={handleSubmitItem}>
+                        <form onSubmit={update ? handleUpdateItem : handleSubmitItem}>
                             <div className="grid grid-cols-6 gap-6">
                                 <div className="col-span-6 sm:col-span-3">
                                     <label htmlFor="product-name" className="block mb-2 text-xl font-normal font-yan text-[#3e454c]">Name</label>
