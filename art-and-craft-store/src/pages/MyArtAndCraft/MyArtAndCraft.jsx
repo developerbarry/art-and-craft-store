@@ -28,6 +28,8 @@ const MyArtAndCraft = () => {
                         myItems.map((myItem) => <CarftAndArtCard 
                         key={myItem._id} 
                         myOwnItem={true} 
+                        myItems={myItems}
+                        setMyItems={setMyItems}
                         artAndCraftItem={myItem} 
 
                         />)

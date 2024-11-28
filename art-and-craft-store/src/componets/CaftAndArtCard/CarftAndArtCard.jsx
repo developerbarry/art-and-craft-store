@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 
 
-const CarftAndArtCard = ({ artAndCraftItem, myOwnItem }) => {
+const CarftAndArtCard = ({ artAndCraftItem, myOwnItem, myItems, setMyItems }) => {
 
     const {
         _id,
@@ -29,15 +29,18 @@ const CarftAndArtCard = ({ artAndCraftItem, myOwnItem }) => {
                 })
                     .then(res => res.json())
                     .then(data => {
-                        console.log(data)
+                        const exist = myItems.filter(item => item._id !== _id);
+                        setMyItems(exist)
+                        if (data.deletedCount > 0) {
+                            Swal.fire({
+                                title: "Deleted!",
+                                text: "Your file has been deleted.",
+                                icon: "success"
+                            });
+                        }
                     })
 
 
-                // Swal.fire({
-                //     title: "Deleted!",
-                //     text: "Your file has been deleted.",
-                //     icon: "success"
-                // });
             }
         });
     }
@@ -93,7 +96,9 @@ const CarftAndArtCard = ({ artAndCraftItem, myOwnItem }) => {
 
 CarftAndArtCard.propTypes = {
     artAndCraftItem: PropTypes.object,
-    myOwnItem: PropTypes.bool
+    myOwnItem: PropTypes.bool,
+    myItems: PropTypes.array,
+    setMyItems: PropTypes.func
 }
 
 export default CarftAndArtCard;
