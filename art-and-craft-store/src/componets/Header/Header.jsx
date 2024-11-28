@@ -64,21 +64,23 @@ const Header = () => {
                         <li><NavLink to={'/contact'} className={({ isActive }) => `${isActive ? "text-[#0EB2E7]" : "text-[#3e454c]"} text-sm md:text-xl font-medium hover:text-[#0EB2E7]`}>Contact</NavLink></li>
                     </ul>
 
+                    <div className='hidden lg:block'>
 
-                    {isLoading ? (
-                        <div className="loader"></div>
-                    ) :
-                        user ? (
-                            <ProfileDropDown handleSignOut={handleSignOut} />
+                        {isLoading ? (
+                            <div className="loader"></div>
                         ) :
+                            user ? (
+                                <ProfileDropDown handleSignOut={handleSignOut} />
+                            ) :
 
-                            (
-                                <div>
-                                    <Link to={'sign-in'} className="hidden lg:inline-block lg:ml-auto lg:mr-3 py-2 px-6 bg-gray-50 hover:bg-gray-100 text-sm md:text-xl text-gray-900 font-bold  rounded-xl transition duration-200" >Sign In</Link>
-                                    <Link to={'/sign-up'} className="hidden lg:inline-block py-2 px-6 bg-[#0eb2e7] hover:bg-[#1195bf] text-sm md:text-xl text-white font-bold rounded-xl transition duration-200" >Sign up</Link>
-                                </div>
-                            )
-                    }
+                                (
+                                    <div>
+                                        <Link to={'sign-in'} className="hidden lg:inline-block lg:ml-auto lg:mr-3 py-2 px-6 bg-gray-50 hover:bg-gray-100 text-sm md:text-xl text-gray-900 font-bold  rounded-xl transition duration-200" >Sign In</Link>
+                                        <Link to={'/sign-up'} className="hidden lg:inline-block py-2 px-6 bg-[#0eb2e7] hover:bg-[#1195bf] text-sm md:text-xl text-white font-bold rounded-xl transition duration-200" >Sign up</Link>
+                                    </div>
+                                )
+                        }
+                    </div>
 
 
                 </nav>
