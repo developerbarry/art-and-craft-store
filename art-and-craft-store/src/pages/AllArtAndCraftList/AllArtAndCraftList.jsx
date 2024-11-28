@@ -1,10 +1,13 @@
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { useState } from "react";
 import CarftAndArtCard from "../../componets/CaftAndArtCard/CarftAndArtCard";
+import { AuthContext } from "../../provider/AuthProvider";
 
 const AllArtAndCraftList = () => {
 
-    const [artAndCraftItems, setArtAndCraftItems] = useState([])
+    const { loading } = useContext(AuthContext);
+    const [artAndCraftItems, setArtAndCraftItems] = useState([]);
+    const [isLoading, setIsLoading] = useState(loading);
     const [pricingType, setPricingType] = useState("All");
     const skeletonItems = new Array(8).fill(null);
 
@@ -13,10 +16,23 @@ const AllArtAndCraftList = () => {
     };
 
     useEffect(() => {
+        if (!loading) {
+            setIsLoading(false)
+        }
+    }, [loading])
+
+
+    useEffect(() => {
+        setIsLoading(true);
         fetch('http://localhost:5000/all-art-and-craft-items')
             .then(res => res.json())
-            .then(data => setArtAndCraftItems(data))
+            .then(data => {
+                setIsLoading(false);
+                setArtAndCraftItems(data);
+
+            })
     }, [])
+
 
     console.log(artAndCraftItems)
 
@@ -54,28 +70,29 @@ const AllArtAndCraftList = () => {
                         </form>
 
                     </div>
+
                     <div className="grid grid-cols-1 md:grid-cols-4 gap-6 py-14 px-4">
 
                         {
-                            skeletonItems.map((index) => (
-                                <div key={index} className="flex flex-col rounded shadow-md w-full animate-pulse h-96">
-                                    <div className="h-48 rounded-t dark:bg-gray-300"></div>
-                                    <div className="flex-1 px-4 py-8 space-y-4 sm:p-8 dark:bg-gray-50">
-                                        <div className="w-full h-6 rounded dark:bg-gray-300"></div>
-                                        <div className="w-full h-6 rounded dark:bg-gray-300"></div>
-                                        <div className="w-3/4 h-6 rounded dark:bg-gray-300"></div>
+                            isLoading ? (
+
+                                skeletonItems.map((index) => (
+                                    <div key={index} className="flex flex-col rounded shadow-md w-full animate-pulse h-96">
+                                        <div className="h-48 rounded-t dark:bg-gray-300"></div>
+                                        <div className="flex-1 px-4 py-8 space-y-4 sm:p-8 dark:bg-gray-50">
+                                            <div className="w-full h-6 rounded dark:bg-gray-300"></div>
+                                            <div className="w-full h-6 rounded dark:bg-gray-300"></div>
+                                            <div className="w-3/4 h-6 rounded dark:bg-gray-300"></div>
+                                        </div>
                                     </div>
-                                </div>
-                            ))
-                        }
+                                ))
 
+                            ) :
 
+                                (
+                                    artAndCraftItems.map((artAndCraftItem) => <CarftAndArtCard key={artAndCraftItem._id} artAndCraftItem={artAndCraftItem} />)
+                                )
 
-                    </div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-4 gap-6 py-14 px-4">
-                        {
-                            artAndCraftItems.map((artAndCraftItem) => <CarftAndArtCard key={artAndCraftItem._id} artAndCraftItem={artAndCraftItem} />)
                         }
                     </div>
                 </div>
