@@ -24,9 +24,6 @@ const AllArtAndCraftList = () => {
     }, [])
 
 
-    console.log(artAndCraftItems)
-
-
     return (
         <section>
             <div className="container mx-auto">

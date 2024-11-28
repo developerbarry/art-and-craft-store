@@ -57,6 +57,13 @@ async function run() {
             res.send(result)
         })
 
+        app.get('/all-art-and-craft-items/my-art-and-craft/:id', async (req, res) => {
+            const id = req.params.id;
+            const query = { _id: new ObjectId(id) };
+            const result = await allArtAndCraft.findOne(query);
+            res.send(result)
+        })
+
         app.post('/all-art-and-craft-items', async (req, res) => {
             const item = req.body;
             const result = await allArtAndCraft.insertOne(item);
