@@ -9,7 +9,7 @@ const SignIn = () => {
     const [displayPass, setDisplayPass] = useState(false);
     const location = useLocation();
     const navigate = useNavigate();
-
+    console.log(location.state)
 
     const handleSignIn = (event) => {
         event.preventDefault()
@@ -30,7 +30,7 @@ const SignIn = () => {
                         confirmButtonText: 'Ok'
                     })
                 }
-                navigate(location.state);
+                navigate(location.state === null ? '/' : location.state);
                 target.reset();
             })
             .catch((error) => {

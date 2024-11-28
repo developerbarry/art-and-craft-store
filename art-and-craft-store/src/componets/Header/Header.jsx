@@ -64,7 +64,7 @@ const Header = () => {
                         <li><NavLink to={'/contact'} className={({ isActive }) => `${isActive ? "text-[#0EB2E7]" : "text-[#3e454c]"} text-sm md:text-xl font-medium hover:text-[#0EB2E7]`}>Contact</NavLink></li>
                     </ul>
 
-                    <div className='hidden lg:block'>
+                    <div className='hidden lg:block h-8'>
 
                         {isLoading ? (
                             <div className="loader"></div>

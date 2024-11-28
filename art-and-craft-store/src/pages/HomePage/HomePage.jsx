@@ -22,8 +22,6 @@ const HomePage = () => {
             })
     }, [])
 
-    console.log(carftItems)
-
     return (
         <>
             <section>

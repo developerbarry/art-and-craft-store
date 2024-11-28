@@ -10,7 +10,7 @@ const ProfileDropDown = ({ handleSignOut }) => {
     const [profileOpen, setProfileOpen] = useState(false)
     
     return (
-        <div className='absolute right-14 md:right-14 lg:right-6 h-8'>
+        <div className='absolute right-14 md:right-14 lg:right-6'>
             <button
                 onClick={() => setProfileOpen(!profileOpen)}
 
