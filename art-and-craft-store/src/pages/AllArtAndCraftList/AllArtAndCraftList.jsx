@@ -1,13 +1,10 @@
-import { useContext, useEffect } from "react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import CarftAndArtCard from "../../componets/CaftAndArtCard/CarftAndArtCard";
-import { AuthContext } from "../../provider/AuthProvider";
 
 const AllArtAndCraftList = () => {
 
-    const { loading } = useContext(AuthContext);
     const [artAndCraftItems, setArtAndCraftItems] = useState([]);
-    const [isLoading, setIsLoading] = useState(loading);
+    const [isLoading, setIsLoading] = useState(true);
     const [pricingType, setPricingType] = useState("All");
     const skeletonItems = new Array(8).fill(null);
 
@@ -16,20 +13,13 @@ const AllArtAndCraftList = () => {
     };
 
     useEffect(() => {
-        if (!loading) {
-            setIsLoading(false)
-        }
-    }, [loading])
-
-
-    useEffect(() => {
         setIsLoading(true);
         fetch('http://localhost:5000/all-art-and-craft-items')
             .then(res => res.json())
             .then(data => {
-                setIsLoading(false);
-                setArtAndCraftItems(data);
 
+                setArtAndCraftItems(data);
+                setIsLoading(false);
             })
     }, [])
 
@@ -76,7 +66,7 @@ const AllArtAndCraftList = () => {
                         {
                             isLoading ? (
 
-                                skeletonItems.map((index) => (
+                                skeletonItems.map((_, index) => (
                                     <div key={index} className="flex flex-col rounded shadow-md w-full animate-pulse h-96">
                                         <div className="h-48 rounded-t dark:bg-gray-300"></div>
                                         <div className="flex-1 px-4 py-8 space-y-4 sm:p-8 dark:bg-gray-50">
