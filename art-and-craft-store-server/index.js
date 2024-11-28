@@ -95,6 +95,14 @@ async function run() {
         })
 
 
+        app.delete('/all-art-and-craft-items/:id', async (req, res) => {
+            const id = req.params.id;
+            const query = { _id: new ObjectId(id) };
+            const result = await allArtAndCraft.deleteOne(query);
+            res.send(result)
+        })
+
+
         // mainSixCategories
 
         // Send a ping to confirm a successful connection
