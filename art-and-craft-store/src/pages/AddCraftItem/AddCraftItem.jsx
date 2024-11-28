@@ -80,8 +80,9 @@ const AddCraftItem = ({ update }) => {
         const email = user.email;
 
         const item = { image, item_name, subcategory_Name, short_description, price, rating, customization, processing_time, stockStatus, email }
+        console.log(item)
 
-        fetch(`http://localhost:5000/all-art-and-craft-items/my-art-and-craft/${id}`, {
+        fetch(`http://localhost:5000/all-art-and-craft-items/my-art-and-craft/${updateItem._id}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json"
@@ -91,6 +92,14 @@ const AddCraftItem = ({ update }) => {
         .then(res => res.json())
         .then(data => {
             console.log(data)
+            if(data.modifiedCount > 0){
+                Swal.fire({
+                    title: 'Success!',
+                    text: 'Update Successfully',
+                    icon: 'success',
+                    confirmButtonText: 'Ok'
+                })
+            }
         })
     }
 

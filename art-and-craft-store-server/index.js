@@ -70,6 +70,30 @@ async function run() {
             res.send(result)
         })
 
+        app.put('/all-art-and-craft-items/my-art-and-craft/:id', async (req, res) => {
+            const id = req.params.id;
+            const item = req.body;
+            console.log(id, item)
+            const filter = { _id: new ObjectId(id) };
+            const options = { upsert: true };
+            const updateDoc = {
+                $set: {
+                    image: item?.image,
+                    item_name: item?.item_name,
+                    subcategory_Name: item?.subcategory_Name,
+                    short_description: item?.short_description,
+                    price: item?.price,
+                    rating: item?.rating,
+                    customization: item?.customization,
+                    processing_time: item?.processing_time,
+                    stockStatus: item?.stockStatus
+                }
+            }
+
+            const result = await allArtAndCraft.updateOne(filter, updateDoc, options);
+            res.send(result)
+        })
+
 
         // mainSixCategories
 
