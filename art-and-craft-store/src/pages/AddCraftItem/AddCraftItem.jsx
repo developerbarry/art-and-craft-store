@@ -1,5 +1,51 @@
+import { useContext } from "react";
+import { AuthContext } from "../../provider/AuthProvider";
+import Swal from "sweetalert2";
 
 const AddCraftItem = () => {
+
+    const { user } = useContext(AuthContext)
+
+    const handleSubmitItem = (event) => {
+        event.preventDefault()
+        const form = event.target;
+        const image = form.image.value;
+        const item_name = form.item_name.value;
+        const subcategory_Name = form.sub_category.value;
+        const short_description = form.details.value;
+        const price = form.price.value;
+        const rating = form.rating.value;
+        const customization = form.customization.value;
+        const processing_time = form.processing_time.value;
+        const stockStatus = form.stockStatus.value;
+        const email = user.email;
+
+        const newItems = { image, item_name, subcategory_Name, short_description, price, rating, customization, processing_time, stockStatus, email }
+
+        fetch('http://localhost:5000/all-art-and-craft-items', {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(newItems)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                if(data.insertedId){
+                    Swal.fire({
+                        title: 'Success!',
+                        text: 'You item successfully added',
+                        icon: 'success',
+                        confirmButtonText: 'Ok'
+                      })
+                      
+                    form.reset()
+                }
+            })
+    }
+
+
     return (
         <section>
             <div className="container mx-auto">
@@ -13,11 +59,11 @@ const AddCraftItem = () => {
                     </div>
 
                     <div className="p-6 space-y-6">
-                        <form>
+                        <form onSubmit={handleSubmitItem}>
                             <div className="grid grid-cols-6 gap-6">
                                 <div className="col-span-6 sm:col-span-3">
                                     <label htmlFor="product-name" className="block mb-2 text-xl font-normal font-yan text-[#3e454c]">Name</label>
-                                    <input type="text" name="product-name" id="product-name" className="shadow-sm border border-gray-300 text-gray-900 sm:text-base rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5 font-raj" placeholder="Apple Imac 27”" required="" />
+                                    <input type="text" name="item_name" id="product-name" className="shadow-sm border border-gray-300 text-gray-900 sm:text-base rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5 font-raj" placeholder="Enter your item name" required="" />
                                 </div>
                                 <div className="col-span-6 sm:col-span-3">
                                     <label htmlFor="image" className="block mb-2 text-xl font-normal font-yan text-[#3e454c]">Image URL</label>
@@ -25,7 +71,7 @@ const AddCraftItem = () => {
                                 </div>
                                 <div className="col-span-6 sm:col-span-3">
                                     <label htmlFor="category" className="block mb-2 text-xl font-normal font-yan text-[#3e454c]">Category</label>
-                                    <input type="text" name="category" id="category" className="shadow-sm border border-gray-300 text-gray-900 sm:text-base font-raj rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" placeholder="Enter Category Name" required="" />
+                                    <input type="text" name="sub_category" id="category" className="shadow-sm border border-gray-300 text-gray-900 sm:text-base font-raj rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" placeholder="Enter Category Name" required="" />
                                 </div>
                                 <div className="col-span-6 sm:col-span-3">
                                     <label htmlFor="price" className="block mb-2 text-xl font-normal font-yan text-[#3e454c]">Price</label>
@@ -33,16 +79,16 @@ const AddCraftItem = () => {
                                 </div>
                                 <div className="col-span-6 sm:col-span-3">
                                     <label htmlFor="rating" className="block mb-2 text-xl font-normal font-yan text-[#3e454c]">Rating</label>
-                                    <input type="text" name="rating" id="rating" className="shadow-sm border border-gray-300 text-gray-900 sm:text-base font-raj rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" placeholder="Enter Rating" required="" />
+                                    <input type="number" name="rating" id="rating" className="shadow-sm border border-gray-300 text-gray-900 sm:text-base font-raj rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" placeholder="Emaple: 4.5 or 5" required="" />
                                 </div>
                                 <div className="col-span-6 sm:col-span-3">
                                     <label htmlFor="processing-time" className="block mb-2 text-xl font-normal font-yan text-[#3e454c]">Processing Time</label>
-                                    <input type="text" name="processing-time" id="processing-time" className="shadow-sm border border-gray-300 text-gray-900 sm:text-base font-raj rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" placeholder="Enter Processing Time" required="" />
+                                    <input type="text" name="processing_time" id="processing-time" className="shadow-sm border border-gray-300 text-gray-900 sm:text-base font-raj rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" placeholder="Example: 1-5 days" required="" />
                                 </div>
 
                                 <div className="col-span-full">
                                     <label htmlFor="product-details" className="block mb-2 text-xl font-normal font-yan text-[#3e454c]">Product Details</label>
-                                    <textarea id="product-details" rows="6" className="border border-gray-300 text-gray-900 sm:text-base font-raj rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-4" placeholder="Details"></textarea>
+                                    <textarea id="product-details" name="details" rows="6" className="border border-gray-300 text-gray-900 sm:text-base font-raj rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-4" placeholder="Details"></textarea>
                                 </div>
 
                                 <div className="space-y-6 mb-9 col-span-full">
@@ -66,7 +112,7 @@ const AddCraftItem = () => {
                                             <span className="text-[#2A2F43] font-raj sm:text-base">Yes</span>
                                         </label>
                                         <label className="flex items-center space-x-2">
-                                            <input type="radio" name="customization" value="No" className="w-4 h-4 text-gray-400 border-gray-300 focus:ring-gray-400"/>
+                                            <input type="radio" name="customization" value="No" className="w-4 h-4 text-gray-400 border-gray-300 focus:ring-gray-400" />
                                             <span className="text-[#2A2F43] font-raj sm:text-base">No</span>
                                         </label>
                                     </div>
@@ -74,13 +120,13 @@ const AddCraftItem = () => {
 
 
                             </div>
+
+                            <div className="p-6 border-t border-gray-200 rounded-b">
+                                <button className="text-white bg-cyan-600 hover:bg-cyan-700 focus:ring-4 focus:ring-cyan-200 font-medium rounded-lg text-lg px-5 py-2.5 text-center font-yan" type="submit">Save all</button>
+                            </div>
+
                         </form>
                     </div>
-
-                    <div className="p-6 border-t border-gray-200 rounded-b">
-                        <button className="text-white bg-cyan-600 hover:bg-cyan-700 focus:ring-4 focus:ring-cyan-200 font-medium rounded-lg text-lg px-5 py-2.5 text-center font-yan" type="submit">Save all</button>
-                    </div>
-
                 </div>
             </div>
         </section>

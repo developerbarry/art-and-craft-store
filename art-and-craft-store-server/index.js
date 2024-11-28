@@ -49,6 +49,12 @@ async function run() {
             res.send(result)
         })
 
+        app.post('/all-art-and-craft-items', async (req, res) => {
+            const item = req.body;
+            const result = await allArtAndCraft.insertOne(item);
+            res.send(result)
+        })
+
 
         // mainSixCategories
 
