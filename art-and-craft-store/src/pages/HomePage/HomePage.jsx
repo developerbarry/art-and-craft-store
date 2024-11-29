@@ -35,11 +35,12 @@ const HomePage = () => {
             </section>
             <section className='py-16'>
                 <div className='container mx-auto'>
-                    <div>
-
+                    <div className='text-center px-5 md:px-20 lg:px-60 mb-12'>
+                        <h2 className='text-[40px] font-yan text-[#3e454c]'>Art & Craft Categories</h2>
+                        <p className="font-raj text-base font-normal">Step into a world of creativity with our six unique art and craft categories. Whether it&apos;s the beauty of landscapes, the charm of portraits, or the vibrance of watercolors, there&apos;s something here to spark your imagination. Dive into bold oil paintings, detailed charcoal sketches, and fun cartoon designs. Each category is a doorway to artistic expression — discover what speaks to you!</p>
                     </div>
 
-                    <div className='grid grid-cols-1 md:grid-cols-3 gap-x-4 gap-y-10 px-4 md:px-16'>
+                    <div className='grid grid-cols-1 md:grid-cols-3 gap-x-4 gap-y-10 px-4 md:px-4 lg:px-16'>
                         {
                             isLoading ? (
                                 skeletonItems.map((ignored, index) => (

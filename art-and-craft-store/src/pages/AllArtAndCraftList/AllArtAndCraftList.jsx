@@ -5,12 +5,9 @@ const AllArtAndCraftList = () => {
 
     const [artAndCraftItems, setArtAndCraftItems] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
-    const [pricingType, setPricingType] = useState("All");
     const skeletonItems = new Array(8).fill(null);
 
-    const handlePricingChange = (event) => {
-        setPricingType(event.target.value);
-    };
+
 
     useEffect(() => {
         setIsLoading(true);
@@ -24,38 +21,14 @@ const AllArtAndCraftList = () => {
     }, [])
 
 
+
     return (
         <section>
             <div className="container mx-auto">
                 <div className="py-14">
-                    <div>
-                        <form className="flex flex-col md:flex-row justify-center gap-3">
-                            <div className="flex">
-                                <input
-                                    type="text"
-                                    placeholder="Search for the tool you like"
-                                    className="w-full md:w-80 px-3 h-10 rounded-l border-2 border-sky-500 focus:outline-none focus:border-sky-500"
-                                />
-                                <button
-                                    type="submit"
-                                    className="bg-sky-500 text-white rounded-r px-2 md:px-3 py-0 md:py-1"
-                                >
-                                    Search
-                                </button>
-                            </div>
-                            <select
-                                name="pricingType"
-                                value={pricingType} // Controlled by React state
-                                onChange={handlePricingChange}
-                                className="w-full md:w-32 h-10 border-2 border-sky-500 focus:outline-none focus:border-sky-500 text-sky-500 rounded px-2 md:px-3 py-0 md:py-1 tracking-wider"
-                            >
-                                <option value="All">All</option>
-                                <option value="Freemium">Freemium</option>
-                                <option value="Free">Free</option>
-                                <option value="Paid">Paid</option>
-                            </select>
-                        </form>
-
+                    <div className="text-center px-10 md:px-20 lg:px-40">
+                        <h1 className="text-[40px] font-yan text-[#3e454c]">Explore the World of Art & Craft</h1>
+                        <p className="font-raj text-base font-normal mb-5">Unleash your creativity and discover a curated collection of exquisite art and craft items. From breathtaking paintings to intricate handmade creations, our selection showcases the beauty of artistic expression and craftsmanship. Whether you&apos;re looking for inspiration, decoration, or a unique gift, you&apos;ll find pieces that bring imagination to life and add a touch of elegance to any space.</p>
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-4 gap-6 py-14 px-4">
