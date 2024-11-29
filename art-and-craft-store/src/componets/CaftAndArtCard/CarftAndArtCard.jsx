@@ -24,7 +24,7 @@ const CarftAndArtCard = ({ artAndCraftItem, myOwnItem, myItems, setMyItems }) =>
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/all-art-and-craft-items/${_id}`, {
+                fetch(`https://art-and-craft-store-server-eta.vercel.app/all-art-and-craft-items/${_id}`, {
                     method: "DELETE"
                 })
                     .then(res => res.json())

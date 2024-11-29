@@ -13,7 +13,7 @@ const AddCraftItem = ({ update }) => {
 
     useEffect(() => {
         if (update) {
-            fetch(`http://localhost:5000/all-art-and-craft-items/my-art-and-craft/${id}`)
+            fetch(`https://art-and-craft-store-server-eta.vercel.app/all-art-and-craft-items/my-art-and-craft/${id}`)
                 .then(res => res.json())
                 .then(data => {
                     setUpdateItem(data)
@@ -40,7 +40,7 @@ const AddCraftItem = ({ update }) => {
 
         const newItems = { image, item_name, subcategory_Name, short_description, price, rating, customization, processing_time, stockStatus, email }
 
-        fetch('http://localhost:5000/all-art-and-craft-items', {
+        fetch('https://art-and-craft-store-server-eta.vercel.app/all-art-and-craft-items', {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -80,7 +80,7 @@ const AddCraftItem = ({ update }) => {
 
         const item = { image, item_name, subcategory_Name, short_description, price, rating, customization, processing_time, stockStatus, email }
 
-        fetch(`http://localhost:5000/all-art-and-craft-items/my-art-and-craft/${updateItem._id}`, {
+        fetch(`https://art-and-craft-store-server-eta.vercel.app/all-art-and-craft-items/my-art-and-craft/${updateItem._id}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json"

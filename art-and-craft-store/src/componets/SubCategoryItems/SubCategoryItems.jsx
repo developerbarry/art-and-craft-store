@@ -11,7 +11,7 @@ const SubCategoryItems = () => {
 
     useEffect(() => {
         setIsLoading(true)
-        fetch(`http://localhost:5000/all-art-and-craft-items/subcategory/${subcategory}`)
+        fetch(`https://art-and-craft-store-server-eta.vercel.app/all-art-and-craft-items/subcategory/${subcategory}`)
             .then(res => res.json())
             .then(data => {
                 // console.log(data)

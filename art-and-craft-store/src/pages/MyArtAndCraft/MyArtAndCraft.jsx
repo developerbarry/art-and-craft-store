@@ -9,7 +9,7 @@ const MyArtAndCraft = () => {
     const email = user?.email;
 
     useEffect(() => {
-        fetch(`http://localhost:5000/all-art-and-craft-items/email/${email}`)
+        fetch(`https://art-and-craft-store-server-eta.vercel.app/all-art-and-craft-items/email/${email}`)
             .then(res => res.json())
             .then(data => {
                 setMyItems(data)

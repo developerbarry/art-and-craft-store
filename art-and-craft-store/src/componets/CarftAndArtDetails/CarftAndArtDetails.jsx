@@ -6,7 +6,7 @@ const CarftAndArtDetails = () => {
     const { id } = useParams();
 
     useEffect(() => {
-        fetch(`http://localhost:5000/all-art-and-craft-items/${id}`)
+        fetch(`https://art-and-craft-store-server-eta.vercel.app/all-art-and-craft-items/${id}`)
             .then(res => res.json())
             .then(data => setCarftAndArtItem(data))
     }, [id])
