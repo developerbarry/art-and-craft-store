@@ -11,8 +11,7 @@ const CarftAndArtDetails = () => {
             .then(data => setCarftAndArtItem(data))
     }, [id])
 
-    console.log(carftAndArtItem)
-
+    
     return (
         <section>
             <div className="container mx-auto">
