@@ -9,6 +9,7 @@ import SignIn from "../pages/SignIn/SignIn";
 import SignUp from "../pages/SignUp/SignUp";
 import PrivateRoute from "./PrivateRoute";
 import CarftAndArtDetails from "../componets/CarftAndArtDetails/CarftAndArtDetails";
+import SubCategoryItems from "../componets/SubCategoryItems/SubCategoryItems";
 
 
 const routes = (
@@ -26,7 +27,7 @@ const routes = (
         element={<PrivateRoute><AddCraftItem /></PrivateRoute>} />
       <Route path="/my-art-and-craft" element={<PrivateRoute><MyArtAndCraft /></PrivateRoute>} />
       <Route path="/all-art-and-craft-items/my-art-and-craft/:id/edit" element={<AddCraftItem update={true} />} />
-
+      <Route path="/:subcategory" element={<SubCategoryItems />}/>
       <Route path="/contact" element={<ContactPage />} />
       <Route path="/sign-in" element={<SignIn />} />
       <Route path="/sign-up" element={<SignUp />} />

@@ -64,6 +64,14 @@ async function run() {
             res.send(result)
         })
 
+        app.get('/all-art-and-craft-items/subcategory/:sub_category', async (req, res) => {
+            // const sub_category = req.params.sub_category;
+            const query = { sub_category: req.params.sub_category };
+            const cursor = allArtAndCraft.find(query);
+            const result = await cursor.toArray();
+            res.send(result)
+        })
+
         app.post('/all-art-and-craft-items', async (req, res) => {
             const item = req.body;
             const result = await allArtAndCraft.insertOne(item);
