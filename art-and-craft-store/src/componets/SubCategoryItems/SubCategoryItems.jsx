@@ -9,7 +9,16 @@ const SubCategoryItems = () => {
 
     const skeletonItems = new Array(8).fill(null);
 
-
+    useEffect(() => {
+        setIsLoading(true)
+        fetch(`http://localhost:5000/all-art-and-craft-items?sub_category=${subcategory}`)
+            .then(res => res.json())
+            .then(data => {
+                // console.log(data)
+                setSubcategoryDatas(data)
+                setIsLoading(false)
+            })
+    }, [subcategory])
 
     return (
         <section>
