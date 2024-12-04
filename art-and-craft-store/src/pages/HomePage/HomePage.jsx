@@ -14,7 +14,11 @@ const HomePage = () => {
 
     useEffect(() => {
         setIsLoading(true)
+<<<<<<< HEAD
         fetch('http://localhost:5000/six-craft-items')
+=======
+        fetch('https://art-and-craft-store-server-eta.vercel.app/six-craft-items')
+>>>>>>> 586c8d4271cf5f1ee19fce23641b3436f1c79f5c
             .then(res => res.json())
             .then(data => {
                 setCarftItems(data)

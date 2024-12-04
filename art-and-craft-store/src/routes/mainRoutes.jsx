@@ -26,7 +26,11 @@ const routes = (
       <Route path="/add-craft-item"
         element={<PrivateRoute><AddCraftItem /></PrivateRoute>} />
       <Route path="/my-art-and-craft" element={<PrivateRoute><MyArtAndCraft /></PrivateRoute>} />
+<<<<<<< HEAD
       <Route path="/all-art-and-craft-items/:id/edit" element={<AddCraftItem update={true} />} />
+=======
+      <Route path="/all-art-and-craft-items/my-art-and-craft/:id/edit" element={<AddCraftItem update={true} />} />
+>>>>>>> 586c8d4271cf5f1ee19fce23641b3436f1c79f5c
       <Route path="/:subcategory" element={<SubCategoryItems />}/>
       <Route path="/contact" element={<ContactPage />} />
       <Route path="/sign-in" element={<SignIn />} />
