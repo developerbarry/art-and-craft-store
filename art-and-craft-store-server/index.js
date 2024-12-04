@@ -45,18 +45,15 @@ async function run() {
         })
 
         app.get('/all-art-and-craft-items', async (req, res) => {
-<<<<<<< HEAD
             let query = {};
-
+            if (req.query?.email) {
+                query = { email: req.query.email }
+            }
+            
             const cursor = allArtAndCraft.find(query);
             const result = await cursor.toArray();
             res.send(result)
 
-=======
-            const query = allArtAndCraft.find();
-            const result = await query.toArray();
-            res.send(result)
->>>>>>> 586c8d4271cf5f1ee19fce23641b3436f1c79f5c
         })
 
         app.get('/all-art-and-craft-items/:id', async (req, res) => {
@@ -66,31 +63,6 @@ async function run() {
             res.send(result)
         })
 
-<<<<<<< HEAD
-=======
-        app.get('/all-art-and-craft-items/email/:email', async (req, res) => {
-            const email = req.params.email;
-            const query = { email: email };
-            const cursor = allArtAndCraft.find(query);
-            const result = await cursor.toArray();
-            res.send(result)
-        })
-
-        app.get('/all-art-and-craft-items/my-art-and-craft/:id', async (req, res) => {
-            const id = req.params.id;
-            const query = { _id: new ObjectId(id) };
-            const result = await allArtAndCraft.findOne(query);
-            res.send(result)
-        })
-
-        app.get('/all-art-and-craft-items/subcategory/:sub_category', async (req, res) => {
-            // const sub_category = req.params.sub_category;
-            const query = { sub_category: req.params.sub_category };
-            const cursor = allArtAndCraft.find(query);
-            const result = await cursor.toArray();
-            res.send(result)
-        })
->>>>>>> 586c8d4271cf5f1ee19fce23641b3436f1c79f5c
 
         app.post('/all-art-and-craft-items', async (req, res) => {
             const item = req.body;
