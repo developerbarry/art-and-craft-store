@@ -38,12 +38,15 @@ const AuthProvider = ({ children }) => {
         }
     }, [])
 
+
+
+    // Order Confirm into Carft Details Component
     const handleOrder = (item, email) => {
         console.log(item)
         return axios.patch(`http://localhost:5000/all-art-and-craft-items/${item._id}`, { ...item, order: true })
             .then(res => {
                 console.log(res.data)
-                if (res.data) {
+                if (res.data.modifiedCount > 0) {
                     axios.post('http://localhost:5000/orders', { ...item, email })
                         .then(res => {
                             if (res.data.insertedId) {
@@ -70,6 +73,21 @@ const AuthProvider = ({ children }) => {
     };
 
 
+    // Order Delete
+    const handleOrderRemove = (item) => {
+      return  axios.patch(`http://localhost:5000/all-art-and-craft-items/${item._id}`, {
+            ...item, order: false
+        })
+            .then(res => {
+                console.log(res.data)
+               
+            })
+            .catch(error => {
+                console.log(error)
+            })
+    }
+
+
     const authInfo = {
         createNewUser,
         signInUser,
@@ -79,7 +97,8 @@ const AuthProvider = ({ children }) => {
         signOutUser,
         handleOrder,
         setOrders,
-        orders
+        orders,
+        handleOrderRemove
     }
     return (
         <AuthContext.Provider value={authInfo}>

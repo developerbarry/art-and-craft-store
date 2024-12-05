@@ -4,7 +4,7 @@ import { AuthContext } from "../../provider/AuthProvider";
 
 
 const CarftAndArtDetails = () => {
-    const { user, handleOrder } = useContext(AuthContext);
+    const { user, handleOrder, handleOrderRemove } = useContext(AuthContext);
     const [carftAndArtItem, setCarftAndArtItem] = useState({});
     const { id } = useParams();
     const { email } = user;
@@ -18,6 +18,10 @@ const CarftAndArtDetails = () => {
 
     const handleConfirmOrder = (item) => {
         handleOrder(item, email)
+    }
+
+    const handleOrderDelete = (item) => {
+        handleOrderRemove(item)
     }
 
     console.log(carftAndArtItem)
@@ -57,6 +61,7 @@ const CarftAndArtDetails = () => {
                             {
                                 carftAndArtItem?.order ? (
                                     <button
+                                        onClick={() => handleOrderDelete(carftAndArtItem)}
                                         className="px-4 py-2.5 text-white bg-red-600 mt-4 font-yan text-xl"
                                     >
                                         Cancel Order
