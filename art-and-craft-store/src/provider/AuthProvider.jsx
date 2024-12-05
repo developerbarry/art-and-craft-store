@@ -83,7 +83,14 @@ const AuthProvider = ({ children }) => {
                 if(res.data.modifiedCount > 0){
                     axios.delete(`http://localhost:5000/orders/${item._id}`)
                     .then(res => {
-                        console.log(res.data)
+                        if(res.data.deletedCount > 0){
+                            Swal.fire({
+                                title: 'Success!',
+                                text: 'Order Successfully Cancel!',
+                                icon: 'success',
+                                confirmButtonText: 'Ok',
+                            });
+                        }
                     })
                     .catch(error => {
                         console.log(error)
