@@ -80,7 +80,15 @@ const AuthProvider = ({ children }) => {
         })
             .then(res => {
                 console.log(res.data)
-               
+                if(res.data.modifiedCount > 0){
+                    axios.delete(`http://localhost:5000/orders/${item._id}`)
+                    .then(res => {
+                        console.log(res.data)
+                    })
+                    .catch(error => {
+                        console.log(error)
+                    })
+                }
             })
             .catch(error => {
                 console.log(error)
