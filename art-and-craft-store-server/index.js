@@ -2,11 +2,18 @@ const express = require('express');
 const cors = require('cors');
 const app = express();
 require('dotenv').config()
+const jwt = require('jsonwebtoken');
+let cookieParser = require('cookie-parser');
 const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb');
 const port = process.env.PORT || 5000;
 
-app.use(cors());
-app.use(express.json())
+app.use(cors({
+    origin: ['http://localhost:5173'],
+    credentials: true
+}));
+app.use(express.json());
+app.use(cookieParser())
+
 
 
 const uri = `mongodb+srv://${process.env.DB_USRE}:${process.env.DB_PASS}@cluster0.iam7h.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`;
@@ -20,6 +27,26 @@ const client = new MongoClient(uri, {
     }
 });
 
+
+//Own MiddleWare
+
+const verifyToken = async (req, res, next) => {
+    const token = req.cookies.token;
+    if (!token) {
+        return res.status(401).send({ message: "Unauthorize Access" });
+    }
+
+    jwt.verify(token, process.env.ACCESS_TOKEN, (error, decoded) => {
+        if (error) {
+            return res.status(401).send({ message: "Unauthorize Access" });
+        }
+
+        res.user = decoded;
+        next();
+    })
+
+}
+
 async function run() {
     try {
         // Connect the client to the server	(optional starting in v4.7)
@@ -28,6 +55,20 @@ async function run() {
         const database = client.db("CarftAndArtDB");
         const allArtAndCraft = database.collection("artAndCraft")
         const sixCraftItems = database.collection("mainSixCategories");
+        const bookings = database.collection("bookings");
+
+
+        // Auth API
+        app.post('/jwt', async (req, res) => {
+            const userEmail = req.body;
+            const token = jwt.sign(userEmail, process.env.ACCESS_TOKEN, { expiresIn: '1h' });
+            res.cookie('token', token, {
+                httpOnly: true,
+                secure: false,
+                maxAge: 360000
+            })
+            res.send({ success: true })
+        })
 
 
         app.get('/six-craft-items', async (req, res) => {
@@ -37,10 +78,12 @@ async function run() {
         })
 
         app.get('/all-art-and-craft-items', async (req, res) => {
+
             let query = {};
             if (req.query?.email) {
                 query = { email: req.query.email }
             }
+
 
             if (req.query?.sub_category) {
                 query.sub_category = req.query.sub_category;
@@ -59,10 +102,27 @@ async function run() {
             res.send(result)
         })
 
+        app.get('/orders', async (req, res) => {
+            let query = {};
+            if (req.query?.email) {
+                query = { email: req.query?.email };
+            }
+
+            const cursor = bookings.find(query);
+            const result = await cursor.toArray();
+            res.send(result)
+        })
+
 
         app.post('/all-art-and-craft-items', async (req, res) => {
             const item = req.body;
             const result = await allArtAndCraft.insertOne(item);
+            res.send(result)
+        })
+
+        app.post('/orders', async (req, res) => {
+            const item = req.body;
+            const result = await bookings.insertOne(item);
             res.send(result)
         })
 
@@ -87,6 +147,19 @@ async function run() {
             }
 
             const result = await allArtAndCraft.updateOne(filter, updateDoc, options);
+            res.send(result)
+        })
+
+        app.patch('/all-art-and-craft-items/:id', async (req, res) => {
+            const id = req.params.id
+            const updateInfo = req.body;
+            const filter = { _id: new ObjectId(id) };
+            const updateDoc = {
+                $set: {
+                    order: updateInfo?.order
+                }
+            }
+            const result = await allArtAndCraft.updateOne(filter, updateDoc);
             res.send(result)
         })
 

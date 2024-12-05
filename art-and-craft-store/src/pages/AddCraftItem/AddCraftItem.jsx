@@ -13,11 +13,7 @@ const AddCraftItem = ({ update }) => {
 
     useEffect(() => {
         if (update) {
-<<<<<<< HEAD
             fetch(`http://localhost:5000/all-art-and-craft-items/${id}`)
-=======
-            fetch(`https://art-and-craft-store-server-eta.vercel.app/all-art-and-craft-items/my-art-and-craft/${id}`)
->>>>>>> 586c8d4271cf5f1ee19fce23641b3436f1c79f5c
                 .then(res => res.json())
                 .then(data => {
                     setUpdateItem(data)
@@ -44,11 +40,7 @@ const AddCraftItem = ({ update }) => {
 
         const newItems = { image, item_name, subcategory_Name, short_description, price, rating, customization, processing_time, stockStatus, email }
 
-<<<<<<< HEAD
         fetch('http://localhost:5000/all-art-and-craft-items', {
-=======
-        fetch('https://art-and-craft-store-server-eta.vercel.app/all-art-and-craft-items', {
->>>>>>> 586c8d4271cf5f1ee19fce23641b3436f1c79f5c
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -88,11 +80,7 @@ const AddCraftItem = ({ update }) => {
 
         const item = { image, item_name, subcategory_Name, short_description, price, rating, customization, processing_time, stockStatus, email }
 
-<<<<<<< HEAD
         fetch(`http://localhost:5000/all-art-and-craft-items/${updateItem._id}`, {
-=======
-        fetch(`https://art-and-craft-store-server-eta.vercel.app/all-art-and-craft-items/my-art-and-craft/${updateItem._id}`, {
->>>>>>> 586c8d4271cf5f1ee19fce23641b3436f1c79f5c
             method: "PUT",
             headers: {
                 "Content-Type": "application/json"

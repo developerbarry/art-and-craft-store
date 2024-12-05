@@ -11,10 +11,7 @@
   },
   "dependencies": {
     "@emotion/react": "^11.13.5",
-<<<<<<< HEAD
     "axios": "^1.7.9",
-=======
->>>>>>> 586c8d4271cf5f1ee19fce23641b3436f1c79f5c
     "firebase": "^11.0.2",
     "prop-types": "^15.8.1",
     "react": "^18.3.1",

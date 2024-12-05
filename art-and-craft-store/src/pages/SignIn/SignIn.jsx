@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
 import Swal from "sweetalert2";
+import axios from "axios";
 
 const SignIn = () => {
 
@@ -9,7 +10,6 @@ const SignIn = () => {
     const [displayPass, setDisplayPass] = useState(false);
     const location = useLocation();
     const navigate = useNavigate();
-    console.log(location.state)
 
     const handleSignIn = (event) => {
         event.preventDefault()
@@ -21,6 +21,7 @@ const SignIn = () => {
         signInUser(email, password)
             .then((userCredential) => {
                 const user = userCredential.user;
+                const userEmail = { email };
                 console.log(user)
                 if (user) {
                     Swal.fire({
@@ -29,9 +30,21 @@ const SignIn = () => {
                         icon: 'success',
                         confirmButtonText: 'Ok'
                     })
+
+                    navigate(location.state === null ? '/' : location.state);
+                    target.reset();
                 }
-                navigate(location.state === null ? '/' : location.state);
-                target.reset();
+
+                axios.post('http://localhost:5000/jwt', userEmail, {
+                    withCredentials: true
+                })
+                .then(res => {
+                    console.log(res.data)
+                })
+                .catch(error=> {
+                    console.log(error)
+                })
+
             })
             .catch((error) => {
                 const errorMessage = error.message;
@@ -46,7 +59,7 @@ const SignIn = () => {
             })
     }
 
-    
+
 
     return (
         <section>
