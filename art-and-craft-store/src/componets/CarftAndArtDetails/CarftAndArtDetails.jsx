@@ -17,14 +17,17 @@ const CarftAndArtDetails = () => {
     }, [id]);
 
     const handleConfirmOrder = (item) => {
-        handleOrder(item, email)
+        handleOrder(item, email);
+        const updatedState = { ...carftAndArtItem, order: true };
+        setCarftAndArtItem(updatedState);
     }
 
     const handleOrderDelete = (item) => {
-        handleOrderRemove(item)
-    }
+        handleOrderRemove(item);
+        const updatedState = { ...carftAndArtItem, order: false };
+        setCarftAndArtItem(updatedState);
 
-    console.log(carftAndArtItem)
+    }
 
     return (
         <section>

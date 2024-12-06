@@ -57,13 +57,16 @@ const SignUp = () => {
 
                     form.reset();
 
-                }).catch(() => {
-                    Swal.fire({
-                        title: 'error!',
-                        text: 'Something is Wrong!',
-                        icon: 'error',
-                        confirmButtonText: 'Ok'
-                    })
+                }).catch((error) => {
+                    if (error) {
+                        Swal.fire({
+                            title: 'error!',
+                            text: 'Something is Wrong!',
+                            icon: 'error',
+                            confirmButtonText: 'Ok'
+                        })
+                    }
+
                 })
 
             })
