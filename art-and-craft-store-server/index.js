@@ -12,7 +12,6 @@ app.use(cors({
     credentials: true
 }));
 app.use(express.json());
-app.use(cookieParser())
 
 
 
@@ -29,23 +28,6 @@ const client = new MongoClient(uri, {
 
 
 //Own MiddleWare
-
-const verifyToken = async (req, res, next) => {
-    const token = req.cookies.token;
-    if (!token) {
-        return res.status(401).send({ message: "Unauthorize Access" });
-    }
-
-    jwt.verify(token, process.env.ACCESS_TOKEN, (error, decoded) => {
-        if (error) {
-            return res.status(401).send({ message: "Unauthorize Access" });
-        }
-
-        res.user = decoded;
-        next();
-    })
-
-}
 
 async function run() {
     try {
@@ -64,10 +46,10 @@ async function run() {
             const token = jwt.sign(userEmail, process.env.ACCESS_TOKEN, { expiresIn: '1h' });
             res.cookie('token', token, {
                 httpOnly: true,
-                secure: false,
-                maxAge: 360000
-            })
-            res.send({ success: true })
+                secure:false,
+                maxAge:360000
+            });
+            res.send({success: true});
         })
 
 

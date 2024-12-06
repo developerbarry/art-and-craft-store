@@ -44,6 +44,7 @@ const SignUp = () => {
         createNewUser(email, password)
             .then((userCredential) => {
                 const user = userCredential.user;
+                form.reset();
                 updateProfile(user, {
                     displayName: name,
                     photoURL: photoURL
@@ -54,8 +55,6 @@ const SignUp = () => {
                         icon: 'success',
                         confirmButtonText: 'Ok'
                     })
-
-                    form.reset();
 
                 }).catch((error) => {
                     if (error) {

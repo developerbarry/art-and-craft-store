@@ -38,12 +38,13 @@ const SignIn = () => {
                 axios.post('http://localhost:5000/jwt', userEmail, {
                     withCredentials: true
                 })
-                .then(res => {
-                    console.log(res.data)
-                })
-                .catch(error=> {
-                    console.log(error)
-                })
+                    .then(res => {
+                        console.log(res.data)
+                    })
+                    .catch(error => {
+                        console.log(error)
+                    })
+
 
             })
             .catch((error) => {
