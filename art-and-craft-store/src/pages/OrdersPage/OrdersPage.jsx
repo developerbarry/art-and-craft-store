@@ -7,7 +7,9 @@ const OrdersPage = () => {
     const { email } = user;
 
     useEffect(() => {
-        axios.get(`http://localhost:5000/orders?email=${email}`)
+        axios.get(`http://localhost:5000/orders?email=${email}`, {
+            withCredentials: true
+        })
             .then(res => {
                 setOrders(res.data)
             })
